@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microneedling Facial | Clínica São Jorge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fdf9f0',
+                            100: '#f9f0d9',
+                            200: '#f3e0b3',
+                            300: '#ecc980',
+                            400: '#e3b04f',
+                            500: '#d49a2e',
+                            600: '#b87f24',
+                            700: '#94631f',
+                            800: '#7a501e',
+                            900: '#65421b',
+                        },
+                        sand: {
+                            50: '#faf8f5',
+                            100: '#f5f0e8',
+                            200: '#ebe0d0',
+                            300: '#decbb0',
+                            400: '#d0b08d',
+                            500: '#c2966d',
+                            600: '#b07d56',
+                            700: '#936446',
+                            800: '#7a533d',
+                            900: '#644534',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .smooth-scroll { scroll-behavior: smooth; }
+        .text-gradient {
+            background: linear-gradient(135deg, #d49a2e 0%, #b87f24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d49a2e;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .btn-primary {
+            background: linear-gradient(135deg, #d49a2e 0%, #b87f24 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 154, 46, 0.3);
+        }
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .feature-icon {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .process-step {
+            position: relative;
+        }
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #d49a2e 0%, transparent 100%);
+            transform: translateY(-50%);
+        }
+        .process-step:last-child::after { display: none; }
+        @media (max-width: 768px) {
+            .process-step::after { display: none; }
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active { display: block; }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #d49a2e 0%, #b87f24 100%);
+            color: white;
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-sand-50 smooth-scroll">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 border-2 border-gold-600 rounded-full flex items-center justify-center">
+                        <span class="font-serif text-gold-700 font-semibold text-lg">SJ</span>
+                    </div>
+                    <span class="font-serif text-2xl font-medium text-gray-900 tracking-wide">Clínica São Jorge</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#inicio" class="nav-link text-sm font-medium text-gray-700 hover:text-gold-700 transition-colors">Início</a>
+                    <a href="index.html#sobre" class="nav-link text-sm font-medium text-gray-700 hover:text-gold-700 transition-colors">Sobre Nós</a>
+                    <a href="index.html#servicos" class="nav-link text-sm font-medium text-gray-700 hover:text-gold-700 transition-colors">Serviços</a>
+                    <a href="index.html#equipa" class="nav-link text-sm font-medium text-gray-700 hover:text-gold-700 transition-colors">Equipa</a>
+                    <a href="index.html#contacto" class="btn-primary text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-lg">Marcar Consulta</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-gray-100 mt-4">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#inicio" class="block py-2 text-gray-700 hover:text-gold-700">Início</a>
+                <a href="index.html#sobre" class="block py-2 text-gray-700 hover:text-gold-700">Sobre Nós</a>
+                <a href="index.html#servicos" class="block py-2 text-gray-700 hover:text-gold-700">Serviços</a>
+                <a href="index.html#contacto" class="block py-2 text-gold-700 font-medium">Marcar Consulta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section do Tratamento -->
+    <section class="relative min-h-[70vh] flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-sand-50 via-white to-gold-50"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Breadcrumb -->
+                <div class="absolute top-24 left-4 sm:left-6 lg:left-8">
+                    <nav class="flex items-center gap-2 text-sm text-gray-500">
+                        <a href="index.html" class="hover:text-gold-600 transition-colors">Início</a>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        <a href="index.html#servicos" class="hover:text-gold-600 transition-colors">Serviços</a>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        <span class="text-gold-600">Microneedling Facial</span>
+                    </nav>
+                </div>
+
+                <div class="space-y-6 mt-12">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold-100 text-gold-800 rounded-full text-sm font-medium">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        Tratamento Facial
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl lg:text-6xl font-light text-gray-900 leading-tight">
+                        Microneedling <br>
+                        <span class="text-gradient font-medium">Facial</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Procedimento inovador que utiliza microagulhas para estimular a produção natural 
+                        de colagénio e elastina, melhorando significativamente a textura, firmeza e 
+                        rejuvenescimento da pele do rosto.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#marcar" class="btn-primary text-white px-8 py-4 rounded-full font-medium shadow-lg inline-flex items-center gap-2">
+                            Agendar Avaliação
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </a>
+                        <button onclick="document.getElementById('video-modal').classList.remove('hidden')" class="border-2 border-gold-600 text-gold-700 px-8 py-4 rounded-full font-medium hover:bg-gold-50 transition-colors inline-flex items-center gap-2">
+                            <i data-lucide="play-circle" class="w-5 h-5"></i>
+                            Ver Vídeo
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-6 pt-6 text-sm text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-gold-600"></i>
+                            <span>60-90 minutos</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-gold-600"></i>
+                            <span>4-6 sessões recomendadas</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-gold-600"></i>
+                            <span>100% Seguro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&auto=format&fit=crop&q=80" 
+                             alt="Microneedling Facial" 
+                             class="w-full h-[500px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <p class="text-sm font-medium mb-2">Resultados visíveis desde a 1ª sessão</p>
+                            <div class="flex gap-1">
+                                <i data-lucide="star" class="w-5 h-5 fill-current text-gold-400"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current text-gold-400"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current text-gold-400"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current text-gold-400"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current text-gold-400"></i>
+                                <span class="ml-2 text-sm">(4.9/5 - 127 avaliações)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badge flutuante -->
+                    <div class="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-xl">
+                        <div class="text-center">
+                            <p class="font-serif text-3xl text-gold-600 font-bold">95%</p>
+                            <p class="text-xs text-gray-600 mt-1">Satisfação<br>Clientes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-200 pb-4">
+                <button onclick="switchTab('sobre')" class="tab-btn active px-6 py-3 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-all text-sm font-medium" data-tab="sobre">
+                    Sobre o Tratamento
+                </button>
+                <button onclick="switchTab('beneficios')" class="tab-btn px-6 py-3 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-all text-sm font-medium" data-tab="beneficios">
+                    Benefícios
+                </button>
+                <button onclick="switchTab('processo')" class="tab-btn px-6 py-3 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-all text-sm font-medium" data-tab="processo">
+                    O Processo
+                </button>
+                <button onclick="switchTab('precos')" class="tab-btn px-6 py-3 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-all text-sm font-medium" data-tab="precos">
+                    Preços & Pacotes
+                </button>
+                <button onclick="switchTab('faq')" class="tab-btn px-6 py-3 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-all text-sm font-medium" data-tab="faq">
+                    FAQ
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="tab-contents">
+                <!-- Sobre -->
+                <div id="sobre" class="tab-content active">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <h2 class="font-serif text-3xl font-light text-gray-900">
+                                O que é o <span class="text-gradient">Microneedling</span>?
+                            </h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                O Microneedling, também conhecido como terapia de indução de colagénio, 
+                                é um tratamento minimamente invasivo que utiliza um dispositivo com microagulhas 
+                                estéreis para criar microperfurações controladas na pele.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                Estas microlesões estimulam o processo natural de cicatrização do organismo, 
+                                promovendo a produção de colagénio e elastina - proteínas essenciais para 
+                                manter a pele firme, elástica e rejuvenescida.
+                            </p>
+                            
+                            <div class="bg-sand-50 p-6 rounded-xl border-l-4 border-gold-500">
+                                <h4 class="font-medium text-gray-900 mb-2">Ideal para:</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-gold-600"></i>
+                                        Rugas finas e linhas de expressão
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-gold-600"></i>
+                                        Cicatrizes de acne e marcas na pele
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-gold-600"></i>
+                                        Manchas e hiperpigmentação
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-gold-600"></i>
+                                        Poros dilatados e textura irregular
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1570172619644-b0d9d3028eb2?w=600&auto=format&fit=crop&q=80" 
+                                 alt="Procedimento Microneedling" 
+                                 class="rounded-2xl shadow-xl w-full">
+                            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
+                                <p class="text-sm text-gray-600 italic">"Tecnologia de ponta para resultados extraordinários"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefícios -->
+                <div id="beneficios" class="tab-content">
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-3xl font-light text-gray-900 mb-4">
+                            Benefícios <span class="text-gradient">Comprovados</span>
+                        </h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">
+                            Resultados clínicos demonstram melhorias significativas na qualidade da pele 
+                            após apenas 3 sessões de tratamento.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="trending-up" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Produção de Colagénio</h3>
+                            <p class="text-gray-600 text-sm">Aumenta até 400% a produção natural de colagénio nas camadas profundas da pele.</p>
+                        </div>
+
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Textura Uniforme</h3>
+                            <p class="text-gray-600 text-sm">Suaviza a superfície da pele, reduzindo cicatrizes e poros dilatados.</p>
+                        </div>
+
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="sun" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Luminosidade</h3>
+                            <p class="text-gray-600 text-sm">Restaura o brilho natural da pele, combatendo o aspecto cansado e opaco.</p>
+                        </div>
+
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="shield" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Minimalmente Invasivo</h3>
+                            <p class="text-gray-600 text-sm">Procedimento seguro com mínimo desconforto e tempo de recuperação reduzido.</p>
+                        </div>
+
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Resultados Duradouros</h3>
+                            <p class="text-gray-600 text-sm">Efeitos visíveis por 6-12 meses após a conclusão do tratamento.</p>
+                        </div>
+
+                        <div class="feature-card bg-sand-50 p-6 rounded-2xl hover:shadow-lg transition-all">
+                            <div class="feature-icon w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center text-gold-600 mb-4">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">100% Natural</h3>
+                            <p class="text-gray-600 text-sm">Estimula os processos naturais de regeneração celular sem químicos agressivos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Processo -->
+                <div id="processo" class="tab-content">
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-3xl font-light text-gray-900 mb-4">
+                            Como funciona o <span class="text-gradient">tratamento</span>?
+                        </h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-8 mb-12">
+                        <div class="process-step text-center">
+                            <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-serif text-2xl font-bold mx-auto mb-4 relative z-10">
+                                1
+                            </div>
+                            <h4 class="font-medium text-gray-900 mb-2">Avaliação</h4>
+                            <p class="text-sm text-gray-600">Análise detalhada da pele e definição do protocolo personalizado.</p>
+                        </div>
+
+                        <div class="process-step text-center">
+                            <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-serif text-2xl font-bold mx-auto mb-4 relative z-10">
+                                2
+                            </div>
+                            <h4 class="font-medium text-gray-900 mb-2">Preparação</h4>
+                            <p class="text-sm text-gray-600">Limpeza profunda e aplicação de anestésico tópico para conforto.</p>
+                        </div>
+
+                        <div class="process-step text-center">
+                            <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-serif text-2xl font-bold mx-auto mb-4 relative z-10">
+                                3
+                            </div>
+                            <h4 class="font-medium text-gray-900 mb-2">Procedimento</h4>
+                            <p class="text-sm text-gray-600">Aplicação do microneedling com seringas de ácido hialurónico.</p>
+                        </div>
+
+                        <div class="process-step text-center">
+                            <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-serif text-2xl font-bold mx-auto mb-4 relative z-10">
+                                4
+                            </div>
+                            <h4 class="font-medium text-gray-900 mb-2">Pós-Cuidado</h4>
+                            <p class="text-sm text-gray-600">Aplicação de máscara calmante e orientações específicas.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-sand-50 rounded-2xl p-8">
+                        <h3 class="font-serif text-2xl font-medium text-gray-900 mb-6">Cuidados Pós-Tratamento</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-3">
+                                <h4 class="font-medium text-gold-700 flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5"></i>
+                                    Recomendado
+                                </h4>
+                                <ul class="space-y-2 text-sm text-gray-600 ml-7">
+                                    <li>• Hidratar a pele frequentemente</li>
+                                    <li>• Usar protetor solar FPS 50+</li>
+                                    <li>• Manter a pele limpa e seca</li>
+                                    <li>• Beber muita água</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-3">
+                                <h4 class="font-medium text-red-600 flex items-center gap-2">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                    Evitar (Primeiras 48h)
+                                </h4>
+                                <ul class="space-y-2 text-sm text-gray-600 ml-7">
+                                    <li>• Maquilhagem</li>
+                                    <li>• Sol direto e solários</li>
+                                    <li>• Exercício intenso</li>
+                                    <li>• Água muito quente</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preços -->
+                <div id="precos" class="tab-content">
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-3xl font-light text-gray-900 mb-4">
+                            Investimento no seu <span class="text-gradient">bem-estar</span>
+                        </h2>
+                        <p class="text-gray-600">Escolha a opção que melhor se adapta às suas necessidades.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Sessão Única -->
+                        <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-gold-300 transition-all">
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Sessão Única</h3>
+                            <p class="text-sm text-gray-500 mb-6">Ideal para manutenção</p>
+                            <div class="mb-6">
+                                <span class="font-serif text-4xl text-gray-900">€85</span>
+                                <span class="text-gray-500">/sessão</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-6">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Avaliação inicial incluída
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    60 minutos de tratamento
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Produtos pós-tratamento
+                                </li>
+                            </ul>
+                            <button class="w-full py-3 border-2 border-gold-600 text-gold-700 rounded-full font-medium hover:bg-gold-50 transition-colors">
+                                Reservar
+                            </button>
+                        </div>
+
+                        <!-- Pacote Recomendado -->
+                        <div class="bg-gradient-to-br from-gold-50 to-gold-100 border-2 border-gold-400 rounded-2xl p-6 relative transform scale-105 shadow-xl">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-600 text-white px-4 py-1 rounded-full text-xs font-medium">
+                                MAIS POPULAR
+                            </div>
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Pacote 4 Sessões</h3>
+                            <p class="text-sm text-gray-500 mb-6">Protocolo completo recomendado</p>
+                            <div class="mb-6">
+                                <span class="font-serif text-4xl text-gold-700">€280</span>
+                                <span class="text-gray-500">(€70/sessão)</span>
+                            </div>
+                            <div class="text-sm text-green-600 mb-4 font-medium">Poupa €60</div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-6">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    4 sessões de microneedling
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    1 sessão de limpeza profunda OFERTA
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Acompanhamento personalizado
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Kit de cuidados em casa
+                                </li>
+                            </ul>
+                            <button class="w-full btn-primary text-white py-3 rounded-full font-medium shadow-lg">
+                                Agendar Pacote
+                            </button>
+                        </div>
+
+                        <!-- Pacote Premium -->
+                        <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-gold-300 transition-all">
+                            <h3 class="font-serif text-xl font-medium text-gray-900 mb-2">Pacote Premium</h3>
+                            <p class="text-sm text-gray-500 mb-6">6 sessões + extras</p>
+                            <div class="mb-6">
+                                <span class="font-serif text-4xl text-gray-900">€390</span>
+                                <span class="text-gray-500">(€65/sessão)</span>
+                            </div>
+                            <div class="text-sm text-green-600 mb-4 font-medium">Poupa €120</div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-6">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    6 sessões de microneedling
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    2 sessões de radiofrequência OFERTA
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Produtos premium inclusos
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-gold-600"></i>
+                                    Garantia de resultados
+                                </li>
+                            </ul>
+                            <button class="w-full py-3 border-2 border-gold-600 text-gold-700 rounded-full font-medium hover:bg-gold-50 transition-colors">
+                                Reservar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center">
+                        <p class="text-gray-600 text-sm">
+                            <i data-lucide="credit-card" class="w-4 h-4 inline mr-2"></i>
+                            Pagamento disponível em 3x sem juros | Aceitamos todas as modalidades de pagamento
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div id="faq" class="tab-content">
+                    <div class="max-w-3xl mx-auto space-y-4">
+                        <div class="border border-gray-200 rounded-xl overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-sand-50 transition-colors">
+                                <span class="font-medium text-gray-900">O tratamento é doloroso?</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-gold-600 transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-sand-50 text-gray-600 text-sm border-t border-gray-100">
+                                Aplicamos um anestésico tópico 30 minutos antes do procedimento, o que minimiza significativamente o desconforto. A maioria dos clientes descreve a sensação como leve pressão ou formigueiro leve.
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-xl overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-sand-50 transition-colors">
+                                <span class="font-medium text-gray-900">Quanto tempo dura a recuperação?</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-gold-600 transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-sand-50 text-gray-600 text-sm border-t border-gray-100">
+                                A pele apresenta vermelhidão leve nas primeiras 24-48 horas. Pode retomar as atividades normais no dia seguinte, mas deve evitar maquilhagem e sol direto por 2-3 dias.
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-xl overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-sand-50 transition-colors">
+                                <span class="font-medium text-gray-900">Quando vejo resultados?</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-gold-600 transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-sand-50 text-gray-600 text-sm border-t border-gray-100">
+                                Os primeiros resultados são visíveis após 2-3 semanas da primeira sessão, quando o colagénio novo começa a formar-se. Os melhores resultados aparecem após 3-4 sessões.
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-xl overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-sand-50 transition-colors">
+                                <span class="font-medium text-gray-900">Existem contraindicações?</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-gold-600 transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-sand-50 text-gray-600 text-sm border-t border-gray-100">
+                                Não recomendado para grávidas, pessoas com infecções ativas na pele, diabetes descompensada, ou quem toma anticoagulantes. A avaliação inicial determina a sua elegibilidade.
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-xl overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-sand-50 transition-colors">
+                                <span class="font-medium text-gray-900">Qual a periodicidade entre sessões?</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-gold-600 transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-sand-50 text-gray-600 text-sm border-t border-gray-100">
+                                Recomendamos intervalos de 4-6 semanas entre sessões para permitir a regeneração completa do colagénio e obter resultados ótimos.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="marcar" class="py-20 bg-gradient-to-br from-gold-600 to-gold-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-serif text-4xl font-light mb-6">
+                Pronta para transformar a sua pele?
+            </h2>
+            <p class="text-gold-100 text-lg mb-8 max-w-2xl mx-auto">
+                Agende agora a sua avaliação gratuita e descubra como o Microneedling pode 
+                rejuvenescer o seu rosto de forma natural e segura.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="tel:930414812" class="bg-white text-gold-700 px-8 py-4 rounded-full font-medium hover:bg-gold-50 transition-colors shadow-lg inline-flex items-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    930 414 812
+                </a>
+                <a href="index.html#contacto" class="border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-gold-700 transition-colors inline-flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    Marcar Online
+                </a>
+            </div>
+
+            <div class="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gold-100">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <span>Avaliação Gratuita</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <span>Profissionais Certificados</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <span>Equipamentos Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Treatments -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-light text-gray-900">Tratamentos <span class="text-gradient">Relacionados</span></h3>
+                    <p class="text-gray-600 mt-2">Combine para resultados ainda melhores</p>
+                </div>
+                <a href="index.html#servicos" class="text-gold-600 hover:text-gold-700 font-medium text-sm flex items-center gap-1">
+                    Ver todos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1: Radiofrequência -->
+                <a href="tratamento-radiofrequencia.html" class="group bg-sand-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&auto=format&fit=crop&q=80" 
+                             alt="Radiofrequência" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-gold-600 text-sm mb-2">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                            <span>Facial</span>
+                        </div>
+                        <h4 class="font-serif text-xl font-medium text-gray-900 mb-2 group-hover:text-gold-700 transition-colors">Radiofrequência Facial</h4>
+                        <p class="text-gray-600 text-sm mb-4">Aquecimento controlado para estimular colagénio e reduzir flacidez.</p>
+                        <span class="text-gold-600 text-sm font-medium flex items-center gap-1">
+                            Saber mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 2: BB Glow -->
+                <a href="tratamento-bb-glow.html" class="group bg-sand-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=400&auto=format&fit=crop&q=80" 
+                             alt="BB Glow" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-gold-600 text-sm mb-2">
+                            <i data-lucide="sun" class="w-4 h-4"></i>
+                            <span>Facial</span>
+                        </div>
+                        <h4 class="font-serif text-xl font-medium text-gray-900 mb-2 group-hover:text-gold-700 transition-colors">BB Glow Premium</h4>
+                        <p class="text-gray-600 text-sm mb-4">Uniformização do tom da pele com aspeto radiante semi-permanente.</p>
+                        <span class="text-gold-600 text-sm font-medium flex items-center gap-1">
+                            Saber mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 3: Limpeza Profunda -->
+                <a href="tratamento-limpeza.html" class="group bg-sand-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&auto=format&fit=crop&q=80" 
+                             alt="Limpeza Profunda" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-gold-600 text-sm mb-2">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span>Facial</span>
+                        </div>
+                        <h4 class="font-serif text-xl font-medium text-gray-900 mb-2 group-hover:text-gold-700 transition-colors">Limpeza de Pele Profunda</h4>
+                        <p class="text-gray-600 text-sm mb-4">Remoção de impurezas e células mortas para pele revitalizada.</p>
+                        <span class="text-gold-600 text-sm font-medium flex items-center gap-1">
+                            Saber mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onclick="this.classList.add('hidden')">
+        <div class="bg-white rounded-2xl overflow-hidden max-w-3xl w-full" onclick="event.stopPropagation()">
+            <div class="aspect-video bg-gray-900 flex items-center justify-center text-white">
+                <div class="text-center">
+                    <i data-lucide="play-circle" class="w-16 h-16 mx-auto mb-4 text-gold-500"></i>
+                    <p>Vídeo demonstrativo do tratamento</p>
+                    <p class="text-sm text-gray-400 mt-2">(Em produção - disponível brevemente)</p>
+                </div>
+            </div>
+            <div class="p-4 flex justify-end">
+                <button onclick="document.getElementById('video-modal').classList.add('hidden')" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 border border-gold-500 rounded-full flex items-center justify-center">
+                            <span class="font-serif text-gold-400 font-semibold">SJ</span>
+                        </div>
+                        <span class="font-serif text-xl font-medium">Clínica São Jorge</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        Corpo, Mente e Alma. Mais de 12 anos de excelência em cuidados estéticos 
+                        na Póvoa de Santa Iria.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium text-gold-400 mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html#sobre" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                        <li><a href="index.html#servicos" class="hover:text-white transition-colors">Serviços</a></li>
+                        <li><a href="index.html#equipa" class="hover:text-white transition-colors">Equipa</a></li>
+                        <li><a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-gold-400 mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Póvoa de Santa Iria</li>
+                        <li>930 414 812</li>
+                        <li>Seg-Sáb: 9h - 20h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2024 Clínica São Jorge. Todos os direitos reservados.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-effect', 'shadow-sm');
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('glass-effect', 'shadow-sm', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching
+        function switchTab(tabName) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.dataset.tab === tabName) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('[data-lucide="chevron-down"]');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
